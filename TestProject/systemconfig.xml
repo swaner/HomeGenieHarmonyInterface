@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MigServiceConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<Gateways>
+    <Gateway Name="WebServiceGateway" IsEnabled="true">
+        <Option Name="BaseUrl" Value="/" />
+        <Option Name="HomePath" Value="html" />
+        <Option Name="Host" Value="*" />
+        <Option Name="Port" Value="8080" />
+        <Option Name="EnableFileCaching" Value="True" />
+    </Gateway>
+</Gateways>
+<Interfaces>
+  <Interface Domain="HomeAutomation.Harmony" IsEnabled="true" AssemblyName="Harmony.dll">
+    <Options>
+      <Option Name="Username" Value="email" />
+      <Option Name="Password" Value="pass" />
+      <Option Name="IPAddress" Value="10.0.0.6" />
+    </Options>
+  </Interface>
+</Interfaces>
+</MigServiceConfiguration>

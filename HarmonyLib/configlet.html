@@ -1,0 +1,51 @@
+<!-- HomeGenie interface settings configlet -->
+<div data-configlet-id="HomeAutomation.Harmony">
+    <div class="ui-grid-a">
+        <div class="ui-block-a">
+        </div>
+        <div class="ui-block-b">
+            <span style="float:right">
+                <select data-ui-field="isenabled" data-role="slider">
+                    <option value="0" data-locale-id="configure_interfaces_optdisable">Disable</option>
+                    <option value="1" data-locale-id="configure_interfaces_optenable">Enable</option>
+                </select>
+                <!--<input data-ui-field="harmonyip" type="text" data-locale-username="configure_interfaces_optharmonyip" value="harmonyip" />
+                <input data-ui-field="username" type="text" data-locale-username="configure_interfaces_optusername" value="username"/>
+                <input data-ui-field="password" type="password" data-locale-username="configure_interfaces_optpassword" />-->
+            </span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    HG.WebApp.SystemSettings.Interfaces['HomeAutomation.Harmony'] = {
+
+        Id: 'HomeAutomation.Harmony',
+    Initialize: function(){
+        var _this = this;
+        var configlet = this.Configlet = $('#'+HG.WebApp.SystemSettings.PageId).find('[data-configlet-id="'+this.Id+'"]');
+        var enabledFlip = configlet.find('[data-ui-field=isenabled]');
+        // get enabled status
+        HG.Configure.MIG.InterfaceCommand(_this.Id, 'IsEnabled.Get', '', '', function (data) {
+            enabledFlip.val(data.ResponseValue).slider('refresh');
+        });
+        // bind to enabled flip changes
+        enabledFlip.on('slidestop', function (event) {
+            HG.Configure.MIG.InterfaceCommand(_this.Id, 'IsEnabled.Set', enabledFlip.val(), '', function (data) { });
+        });
+    },
+    
+    Localize: function() {
+        var configlet = this.Configlet = $('#'+HG.WebApp.SystemSettings.PageId).find('[data-configlet-id="'+this.Id+'"]');
+        var userLang = HG.WebApp.Locales.GetUserLanguage();
+        // English is the default locale
+        var defaultLocale = {
+            "title": 
+                "HomeAutomation Harmony"
+        };
+        HG.WebApp.Locales.LocalizeElement(this.Configlet, defaultLocale);
+        this.Locale = defaultLocale;
+    }
+        
+};
+</script>

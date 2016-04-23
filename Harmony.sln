@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harmony", "HarmonyLib\Harmony.csproj", "{72AB65FF-38AD-4755-8320-C6457C3B18FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub", "GitHub", "{F18DE8E3-57A3-4541-82E4-791977CB9A1A}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		mig_interface_harmony.zip = mig_interface_harmony.zip
+		README.md = README.md
+		README.TXT = README.TXT
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{759CFDAF-D7E2-4E5D-9C05-4C1290A51237}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarmonyHub", "HarmonyHub\HarmonyHub.csproj", "{561D5F22-2CCF-4D84-A677-EB54CC39AFBF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{72AB65FF-38AD-4755-8320-C6457C3B18FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72AB65FF-38AD-4755-8320-C6457C3B18FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72AB65FF-38AD-4755-8320-C6457C3B18FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72AB65FF-38AD-4755-8320-C6457C3B18FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{759CFDAF-D7E2-4E5D-9C05-4C1290A51237}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{759CFDAF-D7E2-4E5D-9C05-4C1290A51237}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{759CFDAF-D7E2-4E5D-9C05-4C1290A51237}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{759CFDAF-D7E2-4E5D-9C05-4C1290A51237}.Release|Any CPU.Build.0 = Release|Any CPU
+		{561D5F22-2CCF-4D84-A677-EB54CC39AFBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{561D5F22-2CCF-4D84-A677-EB54CC39AFBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{561D5F22-2CCF-4D84-A677-EB54CC39AFBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{561D5F22-2CCF-4D84-A677-EB54CC39AFBF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
