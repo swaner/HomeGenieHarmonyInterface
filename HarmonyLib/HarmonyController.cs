@@ -14,8 +14,14 @@ namespace MIG.Interfaces
     {
         private HarmonyClient client;
         private string sessionToken;
+        private bool alwaysReset = false;
 
         public bool IsConnected { get; set; }
+
+        public HarmonyController()
+        {
+            this.alwaysReset = File.Exists("HarmonyAlwaysReset");
+        }
 
         public bool Connect(string username, string password, string ipAddress)
         {
@@ -108,15 +114,23 @@ namespace MIG.Interfaces
 
         public string StartActivity(string address)
         {
-            if (address == "123456789")
-            {
+            if(alwaysReset)
+            { 
                 this.Reset();
             }
+            else
+            {
+                if (address == "123456789")
+                {
+                    Reset();
+                }
+            }
+
             Stopwatch watch = new Stopwatch();
             watch.Start();
             string current = GetCurrentActivity();
             watch.Stop();
-            if(watch.Elapsed.Seconds > 4)
+            if (watch.Elapsed.Seconds > 4 && !alwaysReset)
                 this.Reset();
 
             client.StartActivity(address);

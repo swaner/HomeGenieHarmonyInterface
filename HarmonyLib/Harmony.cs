@@ -73,6 +73,7 @@ namespace MIG.Interfaces.HomeAutomation
                     Address = activity.id,
                     Description = activity.label,
                     ModuleType = ModuleTypes.Switch,
+                    CustomData = new { Name = activity.label },
                 });
             }
             
@@ -81,7 +82,6 @@ namespace MIG.Interfaces.HomeAutomation
                 Domain = Domain,
                 Address = "123456789",
                 Description = "RESET Harmony API",
-                CustomData = new { name= "This resets the harmony connection"},
                 ModuleType = ModuleTypes.Switch,
             });
 
@@ -130,6 +130,11 @@ namespace MIG.Interfaces.HomeAutomation
                     break;
                 case "Control.Toggle":
                     controller.Toggle(command.Address);
+                    raisePropertyChanged = true;
+                    break;
+                case "Control.Reset":
+                    controller.Reset();
+                    raiseParameter = "Reset";
                     raisePropertyChanged = true;
                     break;
                 default:
