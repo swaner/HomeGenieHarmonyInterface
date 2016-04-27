@@ -11,10 +11,14 @@
           <label>Username</label>
           <input data-ui-field="username" type="text" data-locale-username="configure_interfaces_optusername" value="username"/>
         </div>
-        <div class="ui-block-c">
-          <label>Password</label>
-          <input data-ui-field="password" type="password" data-locale-username="configure_interfaces_optpassword" />
-        </div>
+          <div class="ui-block-c">
+              <label>Password</label>
+              <input data-ui-field="password" type="password" data-locale-username="configure_interfaces_optpassword"/>
+          </div>
+          <div class="ui-block-d">
+              <label>Cache SessionToken (experimental)</label>
+              <input data-ui-field="cachetoken" type="checkbox" data-locale-username="configure_interfaces_optcachetoken" />
+          </div>
       </div>
     </div>
     <div class="ui-block-b" align="right">
@@ -36,6 +40,7 @@
         var addressInput = configlet.find('[data-ui-field=harmonyip]');
         var usernameInput = configlet.find('[data-ui-field=username]');
         var passwordInput = configlet.find('[data-ui-field=password]');
+        var cacheTokenInput = configlet.find('[data-ui-field=cachetoken]');
         // get enabled status
         HG.Configure.MIG.InterfaceCommand(_this.Id, 'IsEnabled.Get', '', '', function (data) {
             enabledFlip.val(data.ResponseValue).slider('refresh');
@@ -49,7 +54,10 @@
         });        
         HG.Configure.MIG.InterfaceCommand(this.Id, 'Options.Get', 'Password', '', function (data) {
             passwordInput.val(data.ResponseValue);
-        });        
+        });
+        HG.Configure.MIG.InterfaceCommand(this.Id, 'Options.Get', 'CacheToken', '', function (data) {
+            cacheTokenInput.val(data.ResponseValue);
+        });
         // bind to enabled flip changes
         enabledFlip.on('slidestop', function (event) {
             HG.Configure.MIG.InterfaceCommand(_this.Id, 'IsEnabled.Set', enabledFlip.val(), '', function (data) { });
@@ -63,6 +71,9 @@
         });
         passwordInput.on('change', function() {
             HG.Configure.MIG.InterfaceCommand(_this.Id, 'Option.Set', 'Password', encodeURIComponent(passwordInput.val()), function (data) { });
+        });
+        passwordInput.on('change', function () {
+            HG.Configure.MIG.InterfaceCommand(_this.Id, 'Option.Set', 'CacheToken', encodeURIComponent(cacheTokenInput.val()), function (data) { });
         });
     },
     

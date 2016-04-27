@@ -60,8 +60,11 @@ namespace MIG.Interfaces.HomeAutomation
             string username = this.Options.FirstOrDefault(o => o.Name == "Username")?.Value;
             string password = this.Options.FirstOrDefault(o => o.Name == "Password")?.Value;
             string ipAddress = this.Options.FirstOrDefault(o => o.Name == "IPAddress")?.Value;
+            string cacheTokenString = this.Options.FirstOrDefault(o => o.Name == "CacheToken")?.Value;
+            bool cacheToken;
+            bool.TryParse(cacheTokenString, out cacheToken);
             
-            controller.Connect(username, password, ipAddress);
+            controller.Connect(username, password, ipAddress, cacheToken);
 
             var activities = controller.GetActivities();
             

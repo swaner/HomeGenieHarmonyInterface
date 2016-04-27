@@ -20,14 +20,14 @@ namespace MIG.Interfaces
 
         public HarmonyController()
         {
-            this.alwaysReset = File.Exists("HarmonyAlwaysReset");
         }
 
-        public bool Connect(string username, string password, string ipAddress)
+        public bool Connect(string username, string password, string ipAddress, bool cacheToken)
         {
             this.username = username;
             this.password = password;
             this.ipAddress = ipAddress;
+            this.alwaysReset = !cacheToken;
 
             this.Connect();
             return true;
